@@ -32,7 +32,7 @@ function Fetch(){
     return (
         
         <div>
-        <h1>Data fetched from API</h1>
+        <h1>Data Fetched from API</h1>
         {error ? (
           <p>An error occurred: Unable to fetch data from the API.</p>
         ) : (
