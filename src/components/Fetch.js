@@ -8,7 +8,7 @@ function Fetch(){
     function handleFetch(){
         return axios.get('https://dummyjson.com/products')
         .then((data)=>{
-            localStorage.setItem('obj',JSON.stringify(data.data.products));
+            localStorage.setItem('obj',JSON.stringify(data.data));
             let val = localStorage.getItem('obj');
             let obj2 = JSON.parse(val);
             setObj(obj2)
@@ -36,9 +36,8 @@ function Fetch(){
         {error ? (
           <p>An error occurred: Unable to fetch data from the API.</p>
         ) : (
-          obj.map((prod, index) => (
-            <pre key={index}>{JSON.stringify(prod)}</pre>
-          ))
+            <pre >{JSON.stringify(obj)}</pre>
+          
         )}
       </div>
            
