@@ -4,6 +4,7 @@ let val = '';
 function Fetch(){
     let [obj,setObj] = useState([]);
     let [count,setCount] = useState(0)
+    let [error,setError] = useState(false);
     function handleFetch(){
         return axios.get('https://dummyjson.com/products')
         .then((data)=>{
@@ -15,6 +16,7 @@ function Fetch(){
         })
         .catch((e)=>{
             console.log(e)
+            setError(true)
         })
         
     }
@@ -28,17 +30,19 @@ function Fetch(){
     
 
     return (
+        
         <div>
-            {
-                obj.map((prod)=>{
-                    return (<pre>
-                        {
-                            JSON.stringify(prod)
-                        }
-                    </pre>)
-                })
-            }
-        </div>
+        <h1>Data fetched from API</h1>
+        {error ? (
+          <p>An error occurred: Unable to fetch data from the API.</p>
+        ) : (
+          obj.map((prod, index) => (
+            <pre key={index}>{JSON.stringify(prod)}</pre>
+          ))
+        )}
+      </div>
+           
+        
     )
 }
 export default Fetch
